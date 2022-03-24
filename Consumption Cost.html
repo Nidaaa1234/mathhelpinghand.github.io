@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cost Calculator</title>
+	<link href="https://fonts.googleapis.com/css?family=Dosis|Raleway" rel="stylesheet">
+	<style>#BG{
+		background-image: url(https://c1.staticflickr.com/9/8561/16506886811_05d87c5473_k.jpg);
+		  height: 50%;
+		}
+		#Wrap{
+		  margin: auto;
+		  width: 1400px;
+			overflow: hidden;
+		}
+		#box{
+		color:white;
+		  margin-left:100px;
+		  width:340px;
+		  float:left;
+		   border-right: 1px solid #fff;
+		}
+		input[type="text"] {
+		  background:none;
+			width: 300px;
+		  height:40px;
+		  border:1px solid #fff;
+		  text-align:center;
+		  font-size:30px;
+		  font-family: 'Raleway', sans-serif;
+		  color:white;
+		}
+		#Toinen{
+		  float:left;
+		  color:white;
+		  text-align:center;
+		  height:500px;
+		  width:450px;
+		  border-right: 1px solid #fff;
+		  font-size:45px;
+		  line-height: 155%;
+		  font-family: 'Dosis', sans-serif;
+		  
+		}
+		h1{
+		  color:white;
+		  font-size:20px;
+		  font-family: 'Dosis', sans-serif;
+		  text-align:center;
+		  font-size:80px;
+		  padding-top:50px;
+		  padding-bottom:40px;
+		  font-weight:1;
+		}
+		h2{
+		  font-family: 'Dosis', sans-serif;
+		  color:white;
+		  text-align:center;
+		  font-size:40px;
+		  padding-top:12px;
+		  font-weight:1;
+		}
+		
+		#fuelcalculator{
+		 color:#fff;
+		  font-size:50px;
+		  line-height: 125%;
+		  font-family: 'Dosis', sans-serif;
+		}
+		#submit{
+		  color:#fff;
+		  background:none;
+		  border:1px solid #fff;
+		margin-top:150px;
+		  margin-left:100px;
+		  font-size:100px;
+		  font-family: 'Dosis', sans-serif;
+		
+		}
+		button:focus { outline: none; }
+		.container {
+			margin-left:1px;
+			display: block;
+			position: relative;
+			padding-left: 50px;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		
+		.container input {
+			position: absolute;
+			opacity: 0;
+		
+			cursor: pointer;
+		}
+		
+		
+		.checkmark {
+		margin-top:18px;
+		
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 25px;
+			width:25px;
+		  border:1px solid #fff;
+			background-color: none;
+			border-radius: 20%;
+		}
+		.container:hover input ~ .checkmark {
+			background-color:#f000ff;
+		}
+		
+		
+		.container input:checked ~ .checkmark {
+			background-color: #c6ca53;
+		}
+		
+		.checkmark:after {
+			content: "";
+			position: absolute;
+			display: none;
+		
+		}
+		
+		.container input:checked ~ .checkmark:after {
+			display: block;
+		
+		}
+		.container .checkmark:after {
+			 top: 5px;
+			left: 5px;
+			width: 15px;
+			height: 15px;
+			border-radius: 20%;
+			background: #00b8ff;
+		   
+		}</style>
+  </head>
+  <body id="BG">
+	<div id="Wrap">
+	  <h1>Fuel consumption calculator</h1>
+	<div id="box">
+	  <form id="fuelcalculator">
+		Type of Fuel<br><br>
+		  <label class="container"><input type="radio" name="fueltype" value="Petrol" id="Petrol"> Petrol<br><span class="checkmark"></span></label><label class="container">
+	<input type="radio" name="fueltype" value="Diesel" id="Diesel"> Diesel<br>
+	<span class="checkmark"></span></label><label class="container">
+		<input type="radio" name="fueltype" value="Electricity" id="Electricity"> Electricity<br>
+	<span class="checkmark"></span></label><label class="container">
+		<input type="radio" name="fueltype" value="Solar"
+		   id="Solar"> Solar<br>
+  <span class="checkmark"></span></label><label class="container">
+	  <input type="radio" name="fueltype" value="Nuclear" id="Nuclear"> Nuclear<br>
+	  <span class="checkmark"></span></label> <label class="container">
+	  <input type="radio" name="fueltype" value="BunnyPower" id="BunnyPower" checked> BunnyPower
+	<span class="checkmark"></span></label>
+	</form>
+	</div>
+	  <div id="Toinen">
+	  <form id="fuelAmount">
+		Fuel per 100KM<br>
+		  <input type="Text" id="fuelPerUnit"  ><br>Fuel price per unit
+   <input type="Text" id="fuelPrice"  ><br>Distance to Travel in KM
+   <input type="Text" id="KM"  ><br>
+		</form>
+	</div>
+		 <div id="Kolmas">
+		   <button type="button" onClick="fuelPrice(),fuelConsumption()" id="submit">Calculate</button>
+	</div>
+		</div>
+  <h2 id="answer"></h2>
+	<h2 id="answers"></h2>
+	<script>function fuelPrice(){
+		var fuel100 = document.getElementById("fuelPerUnit").value;
+		var fuelPrice = document.getElementById("fuelPrice").value;
+		var distance = document.getElementById("KM").value;
+	   result=parseFloat(fuel100)/100*parseFloat(fuelPrice)*parseFloat(distance);
+	  if(!isNaN(result))
+		 {
+		 document.getElementById("answer").innerHTML="You pay " + result.toFixed(2); 
+	  
+	  
+	  }
+	  }
+	  function fuelConsumption(){
+		let fuel100 = document.getElementById("fuelPerUnit").value;
+		var fuelcalculator = document.getElementById("fuelcalculator").value;
+		var fueltype = document.forms[0];  
+		var txt = "";
+		  var i;
+		  for (i = 0; i < fueltype.length; i++) {
+			  if (fueltype[i].checked) {
+				  txt = txt + fueltype[i].value + " ";
+			  }
+		  }
+		let distance = document.getElementById("KM").value;
+		result=parseFloat(fuel100)/100*parseFloat(distance);
+		if(!isNaN(result))
+		  {
+			document.getElementById("answers").innerHTML=" And you spent "+ result.toFixed(2) +" units of "+ txt;
+		  }
+	  }</script>
+  </body>

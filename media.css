@@ -1,0 +1,29 @@
+.stickyicon-list {   
+    position: fixed;   
+    top: 200px;   
+    transform: translateY(-50%);             
+    }         
+    .stickyicon-list a {   
+    display: block;   
+    text-align: center;   
+    padding: 8px;   
+    transition: all 0.5s ease;   
+    color: white;   
+    font-size: 20px;   
+    }         
+    .stickyicon-list a:hover {   
+        color: #000;   
+        width:10px;   
+        }   
+    .facebook {   
+            background: #1b56a3;   
+            color: white;  
+            }   
+    .instagram {   
+    background: #e27aa5;   
+    color: white;   
+                }  
+    .twitter {   
+        background: #7acae2;   
+        color: white;   
+                                }             
